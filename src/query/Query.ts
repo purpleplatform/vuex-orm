@@ -1010,7 +1010,7 @@ export default class Query<T extends Model = Model> {
       'afterUpdate'
     ) as Contracts.MutationHook[]
 
-    const updated: Data.Collection<T> = []
+    const toUpdate : Data.Collection<T> = []
 
     for (const id in models) {
       const model = models[id]
@@ -1021,8 +1021,14 @@ export default class Query<T extends Model = Model> {
         continue
       }
 
-      this.commitInsert(model.$getAttributes())
+      toUpdate.push(model)
+    }
 
+    this.commitInsertRecords(this.convertCollectionToRecords(toUpdate))
+
+    const updated: Data.Collection<T> = []
+
+    for (const model of toUpdate) {
       afterHooks.forEach((hook) => {
         hook(model, null, this.entity)
       })
