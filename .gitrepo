@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/purpleplatform/vuex-orm
+	branch = master
+	commit = 62d21d66a899659dabf49d7db9a0a4c04103e764
+	parent = 9ad2133581e096c43e16661022874828c598a338
+	method = merge
+	cmdver = 0.4.7
